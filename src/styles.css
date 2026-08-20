@@ -1,0 +1,131 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: "Source Sans 3", "Segoe UI", system-ui, sans-serif;
+  --font-serif: "Source Serif 4", "Iowan Old Style", "Palatino Linotype", Palatino, serif;
+  --font-display: "Source Serif 4", "Iowan Old Style", Palatino, serif;
+
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-xl: 24px;
+
+  --color-paper: var(--paper);
+  --color-paper-2: var(--paper-2);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-navy: var(--navy);
+  --color-navy-fg: var(--navy-fg);
+  --color-crimson: var(--crimson);
+  --color-ok: var(--ok);
+  --color-warn: var(--warn);
+  --color-mark: var(--mark);
+}
+
+:root {
+  --paper: #f3efe6;
+  --paper-2: #fffcf6;
+  --ink: #142033;
+  --ink-soft: #3b4a5c;
+  --muted: #6a7684;
+  --line: color-mix(in oklab, #142033 11%, transparent);
+  --navy: #12263f;
+  --navy-fg: #f6f1e7;
+  --crimson: #9c1d2d;
+  --ok: #1d6b47;
+  --warn: #8a5a18;
+  --mark: color-mix(in oklab, #c4a15a 38%, transparent);
+  --shadow-border:
+    0 0 0 1px color-mix(in oklab, #142033 7%, transparent),
+    0 1px 2px -1px color-mix(in oklab, #142033 8%, transparent),
+    0 6px 18px -8px color-mix(in oklab, #142033 12%, transparent);
+  --background: var(--paper);
+  --foreground: var(--ink);
+}
+
+.dark {
+  --paper: #0d131b;
+  --paper-2: #151d28;
+  --ink: #ece6da;
+  --ink-soft: #c5c0b4;
+  --muted: #8f9bab;
+  --line: color-mix(in oklab, #ece6da 12%, transparent);
+  --navy: #d8deea;
+  --navy-fg: #101822;
+  --crimson: #d35c6a;
+  --ok: #4cba86;
+  --warn: #d4a15c;
+  --mark: color-mix(in oklab, #c4a15a 28%, transparent);
+  --shadow-border: 0 0 0 1px color-mix(in oklab, #ece6da 10%, transparent);
+  --background: var(--paper);
+  --foreground: var(--ink);
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  html,
+  body,
+  #app {
+    min-height: 100%;
+    background: var(--paper);
+    color: var(--ink);
+  }
+  body {
+    margin: 0;
+    font-family: var(--font-sans);
+    line-height: 1.55;
+  }
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    text-wrap: balance;
+    letter-spacing: -0.025em;
+    line-height: 1.2;
+  }
+  p {
+    text-wrap: pretty;
+  }
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+  :focus-visible {
+    outline: 2px solid var(--crimson);
+    outline-offset: 2px;
+  }
+  mark {
+    background: var(--mark);
+    color: inherit;
+    border-radius: 2px;
+    padding: 0 2px;
+  }
+}
+
+@layer utilities {
+  .shadow-card {
+    box-shadow: var(--shadow-border);
+  }
+  .font-display {
+    font-family: var(--font-display);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -1,0 +1,1 @@
+import{i as e,n as t}from"./jsx-runtime-Cltr0gcK.js";import{S as n}from"./index-B016fzkb.js";var r=e(t(),1);function i(){let[e,t]=(0,r.useState)(!1);return(0,r.useEffect)(()=>{let e=n.persist.onFinishHydration(()=>t(!0));return t(n.persist.hasHydrated()),e},[]),e}export{i as t};
